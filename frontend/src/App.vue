@@ -8,11 +8,9 @@ const todos = ref<Todo[]>([
   { id: 2, title: 'Write report', completed: true },
   { id: 3, title: 'Call Alice', completed: false },
 ]);
-const UnFinished = todos.value.filter(x => x.completed == false);
-const a = computed(
-  function(): number {
-    return UnFinished.length;
- });
+const unfinishedCount = computed(() => {
+  return todos.value.filter(todo => !todo.completed).length;
+});
 
 </script>
 
@@ -21,7 +19,10 @@ const a = computed(
 
     <section class="todo-app">
       <h2>
-        Todos \n<p>{{ a }}</p>
+        Todos
+        <span style="margin-left: 0.5rem; font-size: 0.9em;">
+    ({{ unfinishedCount }})
+  </span>
       </h2>
       <ul>
         <li
