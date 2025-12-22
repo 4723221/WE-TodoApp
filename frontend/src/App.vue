@@ -1,5 +1,6 @@
 <script setup lang=ts>
 import { computed, ref } from 'vue';
+import AddTodo from './components/AddTodo.vue';
 const name = ref('Vue 3 with TypeScript');
 type Todo = { id: number; title: string; completed: boolean };
 // Hardcoded (pseudo) todo data
@@ -16,7 +17,6 @@ const unfinishedCount = computed(() => {
 
 <template>
   <div id="app">
-
     <section class="todo-app">
       <h2>
         Todos
@@ -36,6 +36,9 @@ const unfinishedCount = computed(() => {
           </span>
        </li>
       </ul>
+    </section>
+    <section>
+      <AddTodo v-model:todos="todos" />
     </section>
   </div>
 </template>
