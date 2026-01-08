@@ -5,6 +5,11 @@ import { useTodoStore } from '@/stores/todoStore';
 const todoStore = useTodoStore();
 
 const newTitle = ref<string>('');
+
+function addTodo(){
+  todoStore.addTodo(newTitle.value);
+  newTitle.value = '';
+}
 </script>
 <template>
       <section>
