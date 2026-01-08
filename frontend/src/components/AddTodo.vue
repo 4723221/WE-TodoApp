@@ -1,16 +1,10 @@
 <script setup lang=ts>
-import { ref } from 'vue'; 
-const todos = defineModel("todos")
-// New todo input state
-const newTitle = ref('');
-// compute next id from existing todos 
-const nextId = ref(Math.max(0, ...todos.value.map((t) => t.id)) + 1); 
+import { ref } from 'vue';
+import { useTodoStore } from '@/stores/todoStore';
 
-function addTodo(){
-  const title = newTitle.value;
-  todos.value.push({ id: nextId.value++, title, completed: false }); 
-  newTitle.value = ''; 
-}
+const todoStore = useTodoStore();
+
+const newTitle = ref<string>('');
 </script>
 <template>
       <section>
@@ -22,7 +16,7 @@ function addTodo(){
           placeholder="New todo title"
           aria-label="New todo title"
         />
-        <button v-on:click="addTodo" :disabled="!newTitle.trim()">Add</button>
+        <button v-on:click="todoStore.addTodo(newTitle)" :disabled="!newTitle.trim()">Add</button>
       </div>
     </section>
 </template>
