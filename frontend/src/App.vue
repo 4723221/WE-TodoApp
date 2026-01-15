@@ -22,6 +22,9 @@ const todoStore = useTodoStore();
           <span :style="{ textDecoration: todo.completed ? 'line-through' : 'none' }">
             {{ todo.title }}
           </span>
+          <button @click="todoStore.removeTodo(todo.id)">
+            削除
+          </button>
        </li>
       </ul>
     </section>
