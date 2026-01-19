@@ -15,7 +15,7 @@ const todoStore = useTodoStore();
     >
         <input type="checkbox" v-model="todo.completed" />
         <span :style="{ textDecoration: todo.completed ? 'line-through' : 'none' }">
-        {{ todo.title }}
+        <router link>{{ todo.title }}</router>
         </span>
         <button v-on:click="todoStore.removeTodo(todo.id)">Delete</button>
     </li>

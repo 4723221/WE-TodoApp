@@ -3,8 +3,8 @@
 </script>
 
 <template>
-    <header>
-        <h2>About</h2>
-    </header>
-    <p>TodoListアプリケーションです。</p>
+    <section>
+        <h2>Todo Details</h2>
+        {{ todoStpre.todos[id-1] }}
+    </section>
 </template>
